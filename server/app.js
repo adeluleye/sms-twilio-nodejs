@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const twilio = require('twilio');
+const Twilio = require('twilio');
 
 // Twilio setup
-const accountSid = 'ACCOUNT_SID';
-const authToken = 'AUTH_TOKEN';
-const client = (accountSid, authToken);
+const accountSid = 'YOUR_ACCOUNT_SID';
+const authToken = 'YOUR_AUTH_TOKEN';
+const client = new Twilio(accountSid, authToken);
 
 // Fireup express
 const app = express();
@@ -20,13 +20,13 @@ app.get('/', (req, res) => {
 
 // send text
 app.get('/send-text', (req, res) => {
-    const { recipient, textmessage } = req.query
+    const { recipient, textmessage } = req.query;
 
     // Send text
     client.messages.create({
         body: textmessage,
-        to: recipient,
-        from: '+15074734314'
+        to: '+'+recipient,
+        from: 'YOUR_TWILIO_NUMBER'
     }).then((message) => console.log(message.body));
 })
 

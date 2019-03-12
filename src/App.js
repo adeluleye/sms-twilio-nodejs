@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -13,7 +12,7 @@ class App extends Component {
   sendText = _ => {
     const { text } = this.state;
     // pass variables within the query string
-    fetch('http://localhost:3900/send-text?recipient=${text.recipient}&textmessage=${text.textmessage}')
+    fetch(`http://localhost:3900/send-text?recipient=${text.recipient}&textmessage=${text.textmessage}`)
     .catch(err => console.error(err))
   }
 
